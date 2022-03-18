@@ -1,2 +1,241 @@
 @import "libs"
 @import "vars"
+@import "fonts"
+
+*::-webkit-input-placeholder
+	color: #000
+	font-weight: 400
+
+*:-moz-placeholder
+	color: #000
+	font-weight: 400
+
+*::-moz-placeholder
+	color: #000
+	font-weight: 400
+
+*:-ms-input-placeholder
+	color: #000
+	font-weight: 400
+
+input[type="search"]
+	box-sizing: border-box
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration
+	display: none
+
+input[type="search"]::-ms-clear
+	display: none
+
+a
+	color: #fff
+
+	&:hover
+		color: #fff
+
+.container
+	@media (min-width: 1400px)
+		width: 1320px
+
+	@media (min-width: 1920px)
+		width: 1600px
+
+html, body
+	height: 100%
+
+body
+	font-size: 15px
+	letter-spacing: 0.02em
+	color: #fff
+	min-width: 320px
+	font-family: $default-font
+	overflow-x: hidden
+
+.main-header
+	width: 100%
+	box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.08)
+
+	&__top
+		background-color: $accent
+		min-height: 40px
+		border-radius: 0 0 25px 25px
+		padding: 0 1.5% 0 1.5%
+		display: flex
+		justify-content: space-between
+
+	&__content
+		padding: 16px 0 18px 0
+		display: flex
+		justify-content: space-between
+		align-items: center
+	
+	&__logo
+		transition: transform .2s ease-in-out
+
+		&:hover
+			transform: scale(1.05)
+
+	&__slogan
+		font-family: $minor-font
+		font-size: 14px
+		line-height: 22px
+		letter-spacing: 0.02em
+		color: #828282
+		display: block	
+		width: 184px
+		text-align: center
+	
+	&__search
+		width: 47.5%
+		position: relative
+
+		&-input
+			width: 100%
+			border: 0
+			background-color: #F4F4F4
+			border-radius: 50px
+			padding-left: 69px
+			font-family: $minor-font
+			font-weight: 500
+			min-height: 52px
+			color: #000
+			cursor: pointer
+			outline: 2px solid #F4F4F4
+			transition: outline-color .2s ease-in-out
+
+			&:hover
+				outline-color: $orange
+
+			&:focus
+				outline-color: $accent
+		
+		&-button
+			padding: 0
+			background-color: transparent
+			border: 0
+			position: absolute
+			top: 13px
+			left: 17px
+		
+		&-clear
+			position: absolute
+			right: 13px
+			top: 13px
+			border: 0
+			padding: 0
+			background-color: transparent
+
+		&-svg
+			fill: $accent
+			transition: fill .2s ease-in-out
+
+			&:hover
+				fill: $orange
+		
+	&__button
+		display: flex
+		align-items: center
+		color: #404040
+		position: relative
+
+		&:hover
+			color: #000
+
+			.main-header__product
+				background-color: $orange
+		
+			.main-header__svg
+				fill: $orange
+	
+	&__svg
+		margin-right: 17px
+		fill: $accent
+		transition: fill .2s ease-in-out
+
+		&:hover
+			fill: $orange	
+	
+	&__product
+		font-family: $acrom-font
+		color: #fff
+		font-size: 12px
+		background-color: $accent
+		border-radius: 100px
+		display: block
+		padding: 1px 7px
+		position: absolute
+		top: -6px
+		left: 11px
+		transition: background-color .2s ease-in-out
+		
+		&:hover
+			background-color: $orange
+
+.menu
+	&__list
+		display: flex
+		list-style-type: none
+		padding: 0
+
+	&__item
+		margin-right: 48px
+
+		&:last-child
+			margin-right: 0
+
+	&__link
+		display: flex
+		align-items: center
+		border-bottom: 1px solid transparent
+		transition: border-bottom-color .2s ease-in-out
+
+		&:hover
+			border-bottom-color: #fff
+			text-decoration: none
+
+	&__svg
+		margin-left: 9px
+
+.info
+	&__list
+		display: flex
+		list-style-type: none
+		padding: 0
+
+	&__item
+		margin-left: 50px
+
+	&__button
+		background-color: transparent
+		border: 0
+		padding: 0
+
+		&_dashed
+			border-bottom: dashed
+			border-bottom-color: rgba(#fff, .25)
+			transition: border-bottom-color .2s ease-in-out
+
+		&:hover
+			.info__button_dashed
+				border-bottom-color: #fff
+
+	&__link
+		&_solid
+			border-bottom: 1px solid transparent
+			transition: border-bottom-color .2s ease-in-out
+
+		&:hover
+			text-decoration: none
+
+			.info__link_solid
+				border-bottom-color: #fff
+
+	&__link, &__button
+		display: flex
+		align-items: center
+
+	&__svg
+		margin-right: 10px
