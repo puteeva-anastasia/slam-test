@@ -53,6 +53,13 @@ button
 	left: -99999px
 	margin: -1px
 
+.h2
+	font-family: $roboto-font
+	font-weight: 700
+	font-size: 48px
+	color: $accent
+
+
 .container
 	margin: 0 auto
 
@@ -128,10 +135,7 @@ body
 			outline: 2px solid #F4F4F4
 			transition: outline-color .2s ease-in-out
 
-			&:hover
-				outline-color: $orange
-
-			&:focus
+			&:hover, &:focus
 				outline-color: $accent
 		
 		&-button
@@ -169,12 +173,11 @@ body
 		display: flex
 		align-items: center
 		color: #404040
-		position: relative
 
 		&:hover, &:focus
 			text-decoration: underline
 
-			.main-header__product
+			.basket__count
 				background-color: $orange
 		
 			.main-header__svg
@@ -188,21 +191,28 @@ body
 		&:hover
 			fill: $orange	
 	
-	&__product
+	&__count
+		&:hover
+			background-color: $orange
+
+.basket
+	position: relative
+
+	&__svg
+		fill: $accent
+
+	&__count
 		font-family: $acrom-font
 		color: #fff
 		font-size: 12px
 		background-color: $accent
 		border-radius: 100px
 		display: block
-		padding: 0 7px
+		padding: 1px 7px
 		position: absolute
-		top: -4px
+		top: -1px
 		left: 11px
 		transition: background-color .2s ease-in-out
-		
-		&:hover
-			background-color: $orange
 
 .menu
 	&__list
@@ -287,7 +297,7 @@ body
 	&__svg
 		margin-right: 10px
 		fill: white
-		strong: white
+		stroke: white
 
 .promo
 	&__slider	
@@ -341,7 +351,6 @@ body
 			
 			&_next
 				right: 48px
-
 			
 			&:hover
 				.promo__slider-svg
@@ -349,5 +358,343 @@ body
 		
 		&-svg
 			fill: white
+			transition: fill .2s ease-in-out
 
+.quantity
+	width: 100%
+	height: 40px
+	margin-top: 15px
+	margin-bottom: 12px
+	position: relative
+
+	&__input
+		border: 0
+		background-color: transparent
+		color: #181717
+		letter-spacing: 0.01em
+		font-size: 18px
+		height: 100%
+		width: 100%
+		background-color: #FAFAFA
+		border-radius: 50px
+		text-align: center
+		cursor: pointer
+		outline: 2px solid #FAFAFA
+		transition: outline-color .2s ease-in-out
+
+		&:hover, &:focus
+			outline-color: $accent
+
+	&__button
+		padding: 16px
+		position: absolute
+		top: -1px
+		background:
+			color: transparent
+			size: 12px 12px
+			position: 50%
+			repeat: no-repeat
+		border: 2px solid transparent
+		border-radius: 50%
+		width: 44px
+		height: 44px
+		transition: background-image .2s ease-in-out
+		
+		&.minus
+			left: -2px
+			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 2'%3E%3Crect width='13' height='2' x='.97' rx='1' fill='%23894083'/%3E%3C/svg%3E")	
+		
+			&:hover
+				background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 2'%3E%3Crect width='13' height='2' x='.97' rx='1' fill='%23FF8600'/%3E%3C/svg%3E")	
+				
+		&.plus
+			right: -6px
+			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Crect width='13' height='2' x='.97' y='5' rx='1' fill='%23894083'/%3E%3Crect width='12' height='2' x='8.47' rx='1' transform='rotate(90 8.47 0)' fill='%23894083'/%3E%3C/svg%3E")
+
+			&:hover
+				background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Crect width='13' height='2' x='.97' y='5' rx='1' fill='%23FF8600'/%3E%3Crect width='12' height='2' x='8.47' rx='1' transform='rotate(90 8.47 0)' fill='%23FF8600'/%3E%3C/svg%3E")
+
+.offer
+	&__title
+		margin-top: 49px	
+
+	&__wrap
+		width: 85%
+		margin: 0 auto
+	
+	&__cards
+		position: relative
+
+		&.slick-dotted.slick-slider 
+			margin: 0
+		
+		.slick-list
+			min-height: 620px
+
+		.slick-dots
+			bottom: 90px
+			li
+				height: 8px
+				width: 8px
+				display: none
+				padding: 14px
+				margin: 0
+
+				button
+					height: inherit
+					width: inherit
+					border-radius: 50%
+					background-color: #BDBDBD
+					cursor: pointer
+
+					&:hover 
+						background-color: rgba(255, 134, 0, 0.5)
+
+				&.slick-active
+					display: inline-block
+					button
+						background-color:#FF8700
+
+		.slick-dots li.before, .slick-dots li.after
+			display: inline-block
+	
+	&__item
+		margin: 0 15px
+		position: relative
+
+		&:hover
+			.offer__action
+				display: flex
 			
+			.offer__info
+				padding-bottom: 0
+				border-radius: 22px 0 0 0
+	
+	&__info, &__action
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+		align-items: center
+	
+	&__info
+		padding: 46px 20px 22px
+		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08)
+		border-radius: 22px 0 
+		background-color: white
+		transition: padding .1s ease-in-out
+		position: absolute
+	
+	&__action
+		padding: 0 20px 17px
+		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08)
+		border-radius: 0 0 22px 0
+		background-color: white
+		display: none
+		position: absolute
+		top: 440px
+	
+	&__img
+		display: block
+		margin: 0 auto 45px
+		object-fit: contain
+	
+	&__status
+		font-size: 14px
+		color: $accent
+	
+	&__code
+		font-weight: 300
+		font-size: 14px
+		color: #828282
+		letter-spacing: normal
+
+	&__desc
+		min-height: 88px
+		line-height: 22px
+		color: #181717
+		margin: 10px 0 15px
+	
+	&__price
+		&-new
+			color: #181717
+			font-weight: 700
+			font-size: 24px
+			letter-spacing: normal
+			margin-right: 6px
+
+		&-old
+			color: #828282
+			text-decoration: line-through
+			letter-spacing: .01em
+			font-size: 18px
+			font-weight: 300
+	
+	&__buy, &__add-basket
+		font-weight: 700
+		display: flex
+		align-items: center
+		justify-content: center
+		border: 1px solid #894083
+		border-radius: 50px
+		padding: 0 16px
+		letter-spacing: normal
+	
+	&__buy
+		height: 38px
+		color: $accent
+		transition: color .2s ease-in-out, border-color .2s ease-in-out
+
+		&:hover
+			color: rgba(137, 64, 131, 0.5)
+			border-color: rgba(137, 64, 131, 0.5)
+	
+	&__add-basket
+		height: 40px
+		color: white
+		background-color: $accent
+		transition: border-color .2s ease-in-out, background-color .2s ease-in-out
+
+		&:hover
+			background-color: rgba(137, 64, 131, 0.5)
+			border-color: rgba(137, 64, 131, 0.5)
+	
+	&__tag
+		padding: 3px 10px
+		border-radius: 16px 0px
+		margin-bottom: 2px
+		font-weight: 700
+		font-size: 12px
+	
+	&__tags
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		position: absolute
+		top: 10px
+		left: 10px
+		
+		&_action
+			background-color:	#FDCA33
+		
+		&_new
+			background-color: #8dc638
+	
+		&_rec
+			background-color: #00C2CE
+
+	&__like
+		border: 0
+		background: center / contain no-repeat url(../img/like.svg)
+		width: 24px
+		height: 21px
+		transition: background-image .2s ease-in-out
+		position: absolute
+		top: 18px
+		right: 17px
+
+		&:hover, &.active
+			background: center / contain no-repeat url(../img/like-active.svg)
+
+	&__button
+		&-svg
+			fill: $orange
+	
+	&__arrow
+		background-color: transparent
+		border: 0
+		top: 190px
+		position: absolute
+
+		&_prev
+			left: -126px
+		
+		&_next
+			right: -126px
+		
+		&:hover
+			.offer__arrow-svg
+				fill: $accent
+
+		&-svg
+			fill: $orange
+			transition: fill .2s ease-in-out
+
+.main-bg
+	background: url(../img/bg.png) bottom -70px right 28px / 416px no-repeat
+
+.main-footer
+	background-color: $accent
+	padding: 30px 0 54px
+	width: 100%	
+
+	&__wrap
+		width: 90%
+		margin: 0 auto
+		display: flex
+		flex-wrap: wrap
+	
+	&__nav
+		width: 75%
+		display: flex
+		flex-wrap: wrap
+	
+	&__col
+		width: 33.3333%
+	
+	&__contacts
+		width: 25%
+	
+	&__title
+		font-family: $roboto-font
+		font-weight: 700
+		font-size: 18px
+		letter-spacing: 0.01em
+		margin-bottom: 18px
+		display: block
+	
+	&__list
+		list-style-type: none
+		padding: 0
+	
+	&__item
+		font-family: $roboto-font
+		margin-bottom: 10px
+		display: flex
+		align-items: center
+	
+	&__link
+		transition: color .2s ease-in-out
+		display: flex
+		align-items: center
+
+		&:hover
+			color: rgba(255, 255, 255, 0.5)
+
+			.main-footer__icon
+				fill: rgba(255, 255, 255, 0.5)
+	
+	&__icon
+		margin-right: 14px
+		fill: white
+		transition: fill .2s ease-in-out
+	
+	&__social
+		margin-top: 24px
+		display: flex
+
+		&-link
+			background-color: rgba(255, 255, 255, 0.15)
+			width: 33px
+			height: 33px
+			display: flex
+			justify-content: center
+			align-items: center
+			border-radius: 50%
+			margin-right: 8px
+
+			&:hover
+				background-color: rgba(255, 255, 255, 0.5)
+
+
+
+
