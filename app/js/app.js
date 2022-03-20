@@ -2,6 +2,7 @@ let cardTemplate = document.getElementById("card-template").textContent;
 let cards = document.getElementById("offer-cards");
 let arrayToOutput = DATA;
 
+
 function render() {
 	for (let i = 0; i < arrayToOutput.length; i++) {
 		if (arrayToOutput[i].action == true)
@@ -14,6 +15,23 @@ function render() {
 		else
 			arrayToOutput[i].new = "";
 		
+		if (arrayToOutput[i].rec == true)
+			arrayToOutput[i].rec = '<span class="offer__tags_rec offer__tag">Рекомендуем</span>';
+		else
+			arrayToOutput[i].rec = "";
+		
+		if (arrayToOutput[i].status == true)
+			arrayToOutput[i].status = '<span class="offer__status">В наличии</span>';
+		else{
+			arrayToOutput[i].status = '<span class="offer__status offer__status-missing">Отсутствует</span>';
+		}
+
+		if (arrayToOutput[i].like == true)
+			arrayToOutput[i].like = '<button type="button" class="offer__like active" id="like_' + arrayToOutput[i].id + '"></button>';
+		else{
+			arrayToOutput[i].like = '<button type="button" class="offer__like" id="like_' + arrayToOutput[i].id + '"></button>';
+		}
+
 	}
 	
 	let str = arrayToOutput.map(item => {
@@ -21,8 +39,11 @@ function render() {
 			.replace("ID", item.id)
 			.replace("ACTION", item.action)
 			.replace("NEW", item.new)
+			.replace("REC", item.rec)
+			.replace("LIKE", item.like)
 			.replace("IMAGE", item.image)
 			.replace("DESCRIPTION", item.description)
+			.replace("STATUS", item.status)
 			.replace("PRICE", item.price)
 	}).join(" ");
 	cards.innerHTML = str;

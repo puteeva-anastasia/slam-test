@@ -38,9 +38,17 @@ a
 button
 	cursor: pointer
 	color: #fff
-	font-size: 15px
 	font-family: $default-font
 	letter-spacing: 0.02em
+
+	@media (min-width: $desktop-small)
+		font-size: 15px
+
+	@media (min-width: $desktop-medium)
+		font-size: 13px
+
+	@media (min-width: $desktop-large)
+		font-size: 15px
 
 	&:focus
 		color: $orange
@@ -59,14 +67,19 @@ button
 	font-size: 48px
 	color: $accent
 
-
 .container
 	margin: 0 auto
 
-	@media (min-width: 1400px)
+	@media (min-width: $desktop-small)
+		width: 960px
+
+	@media (min-width: $desktop-medium)
+		width: 1140px
+
+	@media (min-width: $desktop-large)
 		width: 1320px
 
-	@media (min-width: 1920px)
+	@media (min-width: $desktop-extralarge)
 		width: 1600px
 
 html, body
@@ -74,12 +87,20 @@ html, body
 
 body
 	margin: 0
-	font-size: 15px
 	letter-spacing: 0.02em
 	color: #fff
 	min-width: 320px
 	font-family: $default-font
 	overflow-x: hidden
+
+	@media (min-width: $desktop-small)
+		font-size: 15px
+
+	@media (min-width: $desktop-medium)
+		font-size: 13px
+
+	@media (min-width: $desktop-large)
+		font-size: 15px
 
 .main-header
 	width: 100%
@@ -89,12 +110,13 @@ body
 		background-color: $accent
 		min-height: 40px
 		border-radius: 0 0 25px 25px
-		padding: 0 1.5% 0 1.5%
+		padding: 0 1.5% 0 2.1%
 		display: flex
 		justify-content: space-between
+		align-items: center
 
 	&__content
-		padding: 16px 0 18px 0
+		padding: 16px 0
 		display: flex
 		justify-content: space-between
 		align-items: center
@@ -114,10 +136,19 @@ body
 		display: block	
 		width: 184px
 		text-align: center
+		margin-bottom: 6px
+		margin-left: 18px
 	
 	&__search
-		width: 47.5%
 		position: relative
+		margin-right: 9px
+		margin-top: -4px
+
+		@media (min-width: $desktop-medium)
+			width: 40%
+
+		@media (min-width: $desktop-large)
+			width: 47.5%
 
 		&-input
 			font-size: 15px
@@ -126,7 +157,7 @@ body
 			border: 0
 			background-color: #F4F4F4
 			border-radius: 50px
-			padding-left: 69px
+			padding-left: 68px
 			font-family: $minor-font
 			font-weight: 500
 			min-height: 52px
@@ -134,6 +165,7 @@ body
 			cursor: pointer
 			outline: 2px solid #F4F4F4
 			transition: outline-color .2s ease-in-out
+			margin-left: 8px
 
 			&:hover, &:focus
 				outline-color: $accent
@@ -165,6 +197,7 @@ body
 		&-svg
 			fill: $accent
 			transition: fill .2s ease-in-out
+			margin: 0 -6px 0 7px
 
 			&:hover
 				fill: $orange
@@ -173,6 +206,7 @@ body
 		display: flex
 		align-items: center
 		color: #404040
+		margin-left: -4px
 
 		&:hover, &:focus
 			text-decoration: underline
@@ -184,9 +218,16 @@ body
 				fill: $orange
 	
 	&__svg
-		margin-right: 17px
 		fill: $accent
 		transition: fill .2s ease-in-out
+		
+		@media (min-width: $desktop-medium)
+			margin-right: 10px
+			margin-top: 0px
+
+		@media (min-width: $desktop-large)
+			margin-top: 8px
+			margin-right: 17px
 
 		&:hover
 			fill: $orange	
@@ -210,7 +251,7 @@ body
 		display: block
 		padding: 1px 7px
 		position: absolute
-		top: -1px
+		bottom: 21px
 		left: 11px
 		transition: background-color .2s ease-in-out
 
@@ -219,9 +260,14 @@ body
 		display: flex
 		list-style-type: none
 		padding: 0
+		margin: 0
 
 	&__item
-		margin-right: 48px
+		@media (min-width: $desktop-medium)
+			margin-right: 39px
+
+		@media (min-width: $desktop-large)
+			margin-right: 48px
 
 		&:last-child
 			margin-right: 0
@@ -248,11 +294,19 @@ body
 .info
 	&__list
 		display: flex
+		align-items: center
 		list-style-type: none
 		padding: 0
+		margin: 0
 
 	&__item
-		margin-left: 50px
+		margin-left: 37px
+
+		&-call
+			margin-left: 45px
+		
+		&-phone
+			margin-left: 56px
 
 	&__button
 		background-color: transparent
@@ -295,17 +349,39 @@ body
 				fill: $orange
 
 	&__svg
-		margin-right: 10px
+		margin-right: 4px
 		fill: white
 		stroke: white
+
+		&-call
+			margin-right: 10px
+		
+		&-a1
+			margin-right: 7px
+			margin-left: 5px
+		
+		&-mail
+			@media (min-width: $desktop-medium)
+				margin-right: 10px
+
+			@media (min-width: $desktop-large)
+				margin-right: 19px
 
 .promo
 	&__slider	
 		position: relative
 
 		&-link
-			height: 700px
 			position: relative
+
+			@media (min-width: $desktop-medium)
+				height: 600px
+
+			@media (min-width: $desktop-large)
+				height: 700px
+
+			@media (min-width: $desktop-extralarge)
+				height: 798px
 
 			&::after
 				content: ''
@@ -334,7 +410,7 @@ body
 			font-weight: 700
 			font-size: 64px
 			position: absolute
-			top: 40%	
+			top: 41.5%	
 			width: 100%
 			text-align: center
 		
@@ -342,15 +418,15 @@ body
 			border: 0
 			background-color: transparent
 			position: absolute
-			top: 43%
+			top: 44.4%
 			z-index: 100	
 			padding: 0
 
 			&_prev
-				left: 48px
+				left: 50px
 			
 			&_next
-				right: 48px
+				right: 50px
 			
 			&:hover
 				.promo__slider-svg
@@ -386,7 +462,7 @@ body
 			outline-color: $accent
 
 	&__button
-		padding: 16px
+		padding: 16px 37px
 		position: absolute
 		top: -1px
 		background:
@@ -416,7 +492,9 @@ body
 
 .offer
 	&__title
-		margin-top: 49px	
+		margin-top: 37px
+		margin-left: 12px
+		margin-bottom: 46px
 
 	&__wrap
 		width: 85%
@@ -429,10 +507,22 @@ body
 			margin: 0
 		
 		.slick-list
-			min-height: 620px
+			@media (min-width: $desktop-medium)
+				min-height: 580px
+
+			@media (min-width: $desktop-large)
+				min-height: 670px
+
+			@media (min-width: $desktop-extralarge)
+				min-height: 625px
 
 		.slick-dots
-			bottom: 90px
+			@media (min-width: $desktop-medium)
+				bottom: 50px
+
+			@media (min-width: $desktop-large)
+				bottom: 85px	
+
 			li
 				height: 8px
 				width: 8px
@@ -446,6 +536,7 @@ body
 					border-radius: 50%
 					background-color: #BDBDBD
 					cursor: pointer
+					padding: 0
 
 					&:hover 
 						background-color: rgba(255, 134, 0, 0.5)
@@ -465,10 +556,11 @@ body
 		&:hover
 			.offer__action
 				display: flex
-			
+						
 			.offer__info
 				padding-bottom: 0
 				border-radius: 22px 0 0 0
+				box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08)
 	
 	&__info, &__action
 		display: flex
@@ -477,12 +569,17 @@ body
 		align-items: center
 	
 	&__info
-		padding: 46px 20px 22px
 		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08)
 		border-radius: 22px 0 
 		background-color: white
 		transition: padding .1s ease-in-out
 		position: absolute
+
+		@media (min-width: $desktop-medium)
+			padding: 46px 15px 17px
+		
+		@media (min-width: $desktop-extralarge)
+			padding: 46px 20px 22px
 	
 	&__action
 		padding: 0 20px 17px
@@ -491,43 +588,91 @@ body
 		background-color: white
 		display: none
 		position: absolute
-		top: 440px
+
+		@media (min-width: $desktop-medium)
+			top: 436px
+
+		@media (min-width: $desktop-large)
+			top: 480px
+
+		@media (min-width: $desktop-extralarge)
+			top: 436px
+
 	
 	&__img
 		display: block
-		margin: 0 auto 45px
+		margin: 0 auto 43px
 		object-fit: contain
 	
 	&__status
-		font-size: 14px
 		color: $accent
+
+		&-missing
+			color: #C74A2C
+
+		@media (min-width: $desktop-large)
+			font-size: 13px
+		
+		@media (min-width: $desktop-extralarge)
+			font-size: 14px
 	
 	&__code
 		font-weight: 300
-		font-size: 14px
 		color: #828282
 		letter-spacing: normal
+	
+		@media (min-width: $desktop-large)
+			font-size: 13px
+		
+		@media (min-width: $desktop-extralarge)
+			font-size: 14px
 
 	&__desc
-		min-height: 88px
 		line-height: 22px
 		color: #181717
-		margin: 10px 0 15px
+		margin: 10px 0 14px
+		width: 100%
+
+		@media (min-width: $desktop-medium)
+			min-height: 88px
+
+		@media (min-width: $desktop-large)
+			min-height: 132px
+		
+		@media (min-width: $desktop-extralarge)
+			min-height: 88px
 	
 	&__price
+
 		&-new
 			color: #181717
-			font-weight: 700
-			font-size: 24px
+			font-weight: 700	
 			letter-spacing: normal
 			margin-right: 6px
+
+			@media (min-width: $desktop-medium)
+				font-size: 24px
+
+			@media (min-width: $desktop-large)
+				font-size: 22px
+			
+			@media (min-width: $desktop-extralarge)
+				font-size: 24px
 
 		&-old
 			color: #828282
 			text-decoration: line-through
 			letter-spacing: .01em
-			font-size: 18px
 			font-weight: 300
+
+			@media (min-width: $desktop-medium)
+				font-size: 18px	
+
+			@media (min-width: $desktop-large)
+				font-size: 16px	
+			
+			@media (min-width: $desktop-extralarge)
+				font-size: 18px
 	
 	&__buy, &__add-basket
 		font-weight: 700
@@ -538,6 +683,12 @@ body
 		border-radius: 50px
 		padding: 0 16px
 		letter-spacing: normal
+
+		@media (min-width: $desktop-large)
+			width: 100%
+
+		@media (min-width: $desktop-extralarge)
+			width: auto
 	
 	&__buy
 		height: 38px
@@ -547,6 +698,12 @@ body
 		&:hover
 			color: rgba(137, 64, 131, 0.5)
 			border-color: rgba(137, 64, 131, 0.5)
+		
+		@media (min-width: $desktop-large)
+			margin-bottom: 10px
+
+		@media (min-width: $desktop-extralarge)
+			margin: 0
 	
 	&__add-basket
 		height: 40px
@@ -571,7 +728,7 @@ body
 		align-items: flex-start
 		position: absolute
 		top: 10px
-		left: 10px
+		left: 12px
 		
 		&_action
 			background-color:	#FDCA33
@@ -589,8 +746,8 @@ body
 		height: 21px
 		transition: background-image .2s ease-in-out
 		position: absolute
-		top: 18px
-		right: 17px
+		top: 16px
+		right: 12px
 
 		&:hover, &.active
 			background: center / contain no-repeat url(../img/like-active.svg)
@@ -624,32 +781,41 @@ body
 
 .main-footer
 	background-color: $accent
-	padding: 30px 0 54px
+	padding: 33px 0 54px
 	width: 100%	
 
 	&__wrap
-		width: 90%
+		width: 92%
 		margin: 0 auto
 		display: flex
 		flex-wrap: wrap
 	
 	&__nav
-		width: 75%
 		display: flex
 		flex-wrap: wrap
+
+		@media (min-width: $desktop-medium)
+			width: 77%
+
+		@media (min-width: $desktop-large)
+			width: 80%
+
+		@media (min-width: $desktop-extralarge)	
+			width: 83%
 	
 	&__col
-		width: 33.3333%
-	
-	&__contacts
-		width: 25%
+		&-catalog
+			width: 29.5%
+		
+		&-info
+			width: 32%
 	
 	&__title
 		font-family: $roboto-font
 		font-weight: 700
 		font-size: 18px
 		letter-spacing: 0.01em
-		margin-bottom: 18px
+		margin-bottom: 21px
 		display: block
 	
 	&__list
@@ -658,11 +824,15 @@ body
 	
 	&__item
 		font-family: $roboto-font
-		margin-bottom: 10px
+		margin-bottom: 16px
 		display: flex
 		align-items: center
+
+		&-contacts
+			margin-bottom: 23px
 	
 	&__link
+		font-family: $roboto-font
 		transition: color .2s ease-in-out
 		display: flex
 		align-items: center
@@ -677,6 +847,7 @@ body
 		margin-right: 14px
 		fill: white
 		transition: fill .2s ease-in-out
+		margin-left: 7px
 	
 	&__social
 		margin-top: 24px
@@ -690,7 +861,8 @@ body
 			justify-content: center
 			align-items: center
 			border-radius: 50%
-			margin-right: 8px
+			margin-right: 2px
+			margin-left: 5px
 
 			&:hover
 				background-color: rgba(255, 255, 255, 0.5)
