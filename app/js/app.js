@@ -32,6 +32,12 @@ function render() {
 			arrayToOutput[i].like = '<button type="button" class="offer__like" id="like_' + arrayToOutput[i].id + '"></button>';
 		}
 
+		if (arrayToOutput[i].old == "")
+			arrayToOutput[i].old = '<span class="offer__price-old"></span>';
+		else{
+			arrayToOutput[i].old = '<span class="offer__price-old">' + arrayToOutput[i].old + ' р.</span>';
+		}
+
 	}
 	
 	let str = arrayToOutput.map(item => {
@@ -45,6 +51,7 @@ function render() {
 			.replace("DESCRIPTION", item.description)
 			.replace("STATUS", item.status)
 			.replace("PRICE", item.price)
+			.replace("OLD", item.old)
 	}).join(" ");
 	cards.innerHTML = str;
 }

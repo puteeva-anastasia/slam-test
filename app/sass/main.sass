@@ -40,8 +40,9 @@ button
 	color: #fff
 	font-family: $default-font
 	letter-spacing: 0.02em
+	font-size: 13px
 
-	@media (min-width: $desktop-small)
+	@media (min-width: $mobile)
 		font-size: 15px
 
 	@media (min-width: $desktop-medium)
@@ -64,18 +65,36 @@ button
 .h2
 	font-family: $roboto-font
 	font-weight: 700
-	font-size: 48px
 	color: $accent
+	font-size: 20px
+
+	@media (min-width: $mobile)
+		font-size: 32px
+
+	@media (min-width: $desktop-small)
+		font-size: 40px
+
+	@media (min-width: $desktop-medium)
+		font-size: 48px
 
 .container
 	margin: 0 auto
+	position: relative
+	padding: 0 0.75rem
+
+	@media (min-width: $mobile)
+		width: 540px
+		padding: 0
+
+	@media (min-width: $tablet)
+		width: 720px
 
 	@media (min-width: $desktop-small)
 		width: 960px
 
 	@media (min-width: $desktop-medium)
 		width: 1140px
-
+	
 	@media (min-width: $desktop-large)
 		width: 1320px
 
@@ -92,10 +111,11 @@ body
 	min-width: 320px
 	font-family: $default-font
 	overflow-x: hidden
+	font-size: 13px
 
-	@media (min-width: $desktop-small)
+	@media (min-width: $mobile)
 		font-size: 15px
-
+		
 	@media (min-width: $desktop-medium)
 		font-size: 13px
 
@@ -111,21 +131,55 @@ body
 		min-height: 40px
 		border-radius: 0 0 25px 25px
 		padding: 0 1.5% 0 2.1%
-		display: flex
 		justify-content: space-between
 		align-items: center
+		display: none
+
+		@media (min-width: $desktop-medium)
+			display: flex
 
 	&__content
-		padding: 16px 0
 		display: flex
 		justify-content: space-between
 		align-items: center
-	
+		padding: 55px 0 16px 0
+
+		@media (min-width: $mobile)
+			padding-left: 60px
+
+		@media (min-width: $tablet)
+			padding-top: 16px 
+
+		@media (min-width: $desktop-small)
+			padding-left: 70px
+
+		@media (min-width: $desktop-medium)
+			padding-left: 0
+
 	&__logo
 		transition: transform .2s ease-in-out
+		display: flex
+		align-items: center
+		position: absolute
+		top: 0
+		right: 0
+		left: 0
+		justify-content: center
+
+		@media (min-width: $tablet)
+			position: inherit
 
 		&:hover, &:focus
 			transform: scale(1.05)
+		
+		&-img
+			height: auto
+				
+			@media (min-width: $tablet)
+				width: 135px
+
+			@media (min-width: $desktop-small)
+				width: 151px
 
 	&__slogan
 		font-family: $minor-font
@@ -133,16 +187,30 @@ body
 		line-height: 22px
 		letter-spacing: 0.02em
 		color: #828282
-		display: block	
 		width: 184px
 		text-align: center
 		margin-bottom: 6px
 		margin-left: 18px
+		display: none
+
+		@media (min-width: $desktop-medium)
+			display: block
 	
 	&__search
 		position: relative
-		margin-right: 9px
 		margin-top: -4px
+		margin-left: -10px
+		width: 70%
+		margin-right: 0
+
+		@media (min-width: $mobile)
+			margin-left: 0
+
+		@media (min-width: $tablet)
+			width: 45.5%
+
+		@media (min-width: $desktop-small)
+			margin-right: 9px
 
 		@media (min-width: $desktop-medium)
 			width: 40%
@@ -151,21 +219,30 @@ body
 			width: 47.5%
 
 		&-input
-			font-size: 15px
 			letter-spacing: .02em
 			width: 100%
 			border: 0
 			background-color: #F4F4F4
 			border-radius: 50px
-			padding-left: 68px
 			font-family: $minor-font
 			font-weight: 500
-			min-height: 52px
 			color: #000
 			cursor: pointer
 			outline: 2px solid #F4F4F4
 			transition: outline-color .2s ease-in-out
 			margin-left: 8px
+			min-height: 40px
+			padding-left: 10px
+			font-size: 11px
+
+			@media (min-width: $mobile)
+				padding-left: 45px
+				font-size: 13px
+
+			@media (min-width: $desktop-small)
+				min-height: 52px
+				padding-left: 68px
+				font-size: 15px
 
 			&:hover, &:focus
 				outline-color: $accent
@@ -175,8 +252,13 @@ body
 			background-color: transparent
 			border: 0
 			position: absolute
-			top: 13px
-			left: 17px
+			top: 10px
+			right: 0
+			
+			@media (min-width: $mobile)
+				left: 19px
+				right: auto
+				top: 13px
 
 			&:focus
 				.main-header__search-svg
@@ -184,11 +266,18 @@ body
 		
 		&-clear
 			position: absolute
-			right: 13px
 			top: 13px
 			border: 0
 			padding: 0
 			background-color: transparent
+			display: none
+
+			@media (min-width: $mobile)
+				right: 0
+				display: block
+
+			@media (min-width: $desktop-small)
+				right: 13px
 
 			&:focus
 				.main-header__search-svg
@@ -197,7 +286,16 @@ body
 		&-svg
 			fill: $accent
 			transition: fill .2s ease-in-out
-			margin: 0 -6px 0 7px
+			height: auto
+			width: 18px
+
+			@media (min-width: $mobile)
+				margin: -4px 0 0 0
+				width: 22px
+
+			@media (min-width: $desktop-small)
+				margin: 0 -6px 0 7px
+				width: 27px
 
 			&:hover
 				fill: $orange
@@ -206,7 +304,21 @@ body
 		display: flex
 		align-items: center
 		color: #404040
-		margin-left: -4px
+		flex-direction: column
+		margin-left: 0
+
+		@media (min-width: $desktop-small)
+			flex-direction: row
+			margin-left: -4px
+
+		&-txt
+			display: none
+
+			@media (min-width: $tablet)
+				font-size: 14px
+				display: block
+			@media (min-width: $desktop-small)
+				font-size: 15px
 
 		&:hover, &:focus
 			text-decoration: underline
@@ -220,10 +332,11 @@ body
 	&__svg
 		fill: $accent
 		transition: fill .2s ease-in-out
-		
-		@media (min-width: $desktop-medium)
-			margin-right: 10px
+		margin-right: 0
+
+		@media (min-width: $desktop-small)
 			margin-top: 0px
+			margin-right: 10px
 
 		@media (min-width: $desktop-large)
 			margin-top: 8px
@@ -373,6 +486,16 @@ body
 
 		&-link
 			position: relative
+			height: 200px
+
+			@media (min-width: $mobile)
+				height: 300px
+
+			@media (min-width: $tablet)
+				height: 400px
+
+			@media (min-width: $desktop-small)
+				height: 500px
 
 			@media (min-width: $desktop-medium)
 				height: 600px
@@ -408,25 +531,54 @@ body
 			z-index: 100
 			font-family: $roboto-font
 			font-weight: 700
-			font-size: 64px
 			position: absolute
 			top: 41.5%	
 			width: 100%
 			text-align: center
+			font-size: 15px
+
+			@media (min-width: $mobile)
+				font-size: 25px
+
+			@media (min-width: $tablet)
+				font-size: 32px
+
+			@media (min-width: $desktop-small)
+				font-size: 50px
+
+			@media (min-width: $desktop-medium)
+				font-size: 64px
 		
 		&-arrow
 			border: 0
 			background-color: transparent
 			position: absolute
-			top: 44.4%
 			z-index: 100	
 			padding: 0
+			top: 35%
+
+			@media (min-width: $mobile)
+				top: 39.2%
+			@media (min-width: $tablet)
+				top: 41.5%
+			@media (min-width: $desktop-small)
+				top: 44.4%
 
 			&_prev
-				left: 50px
+				left: 5px
+				@media (min-width: $mobile)
+					left: 20px
+
+				@media (min-width: $tablet)
+					left: 50px
 			
 			&_next
-				right: 50px
+				right: 5px
+				@media (min-width: $mobile)
+					right: 20px
+
+				@media (min-width: $tablet)
+					right: 50px
 			
 			&:hover
 				.promo__slider-svg
@@ -435,6 +587,10 @@ body
 		&-svg
 			fill: white
 			transition: fill .2s ease-in-out
+			width: 40px
+
+			@media (min-width: $mobile)
+				width: auto
 
 .quantity
 	width: 100%
@@ -492,13 +648,26 @@ body
 
 .offer
 	&__title
-		margin-top: 37px
 		margin-left: 12px
-		margin-bottom: 46px
+		margin-bottom: 10px
+
+		@media (min-width: $mobile)
+			margin-top: 32px
+			margin-bottom: 20px
+
+		@media (min-width: $desktop-medium)
+			margin-top: 37px
+			margin-bottom: 46px
 
 	&__wrap
-		width: 85%
 		margin: 0 auto
+		width: 85%
+
+		@media (min-width: $mobile-small)
+			width: 70%
+
+		@media (min-width: $tablet)
+			width: 85%
 	
 	&__cards
 		position: relative
@@ -507,8 +676,19 @@ body
 			margin: 0
 		
 		.slick-list
+			min-height: 600px
+
+			@media (min-width: $mobile)
+				min-height: 560px
+
+			@media (min-width: $tablet)
+				min-height: 660px
+
+			@media (min-width: $desktop-small)
+				min-height: 630px
+
 			@media (min-width: $desktop-medium)
-				min-height: 580px
+				min-height: 660px
 
 			@media (min-width: $desktop-large)
 				min-height: 670px
@@ -517,6 +697,14 @@ body
 				min-height: 625px
 
 		.slick-dots
+			display: none !important
+			@media (min-width: $tablet)
+				bottom: 120px
+
+			@media (min-width: $desktop-small)
+				bottom: 70px
+				display: block!important
+
 			@media (min-width: $desktop-medium)
 				bottom: 50px
 
@@ -574,87 +762,148 @@ body
 		background-color: white
 		transition: padding .1s ease-in-out
 		position: absolute
+		padding: 36px 15px 17px
 
 		@media (min-width: $desktop-medium)
-			padding: 46px 15px 17px
+			padding-top: 46px
 		
 		@media (min-width: $desktop-extralarge)
-			padding: 46px 20px 22px
+			padding-right: 20px
+			padding-left: 20px
+			margin-bottom: 22px
 	
 	&__action
 		padding: 0 20px 17px
 		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08)
 		border-radius: 0 0 22px 0
 		background-color: white
-		display: none
+		display: flex
 		position: absolute
+		top: 378px
+
+		@media (min-width: $mobile)
+			top: 397px
+
+		@media (min-width: $tablet)
+			top: 405px
+
+		@media (min-width: $desktop-small)
+			display: none
 
 		@media (min-width: $desktop-medium)
 			top: 436px
 
 		@media (min-width: $desktop-large)
-			top: 480px
+			top: 457px
 
 		@media (min-width: $desktop-extralarge)
 			top: 436px
 
-	
 	&__img
 		display: block
-		margin: 0 auto 43px
+		margin: 0 auto
 		object-fit: contain
+		margin-bottom: 10px
+
+		@media (min-width: $mobile)
+			margin-bottom: 20px
+
+		@media (min-width: $tablet)
+			margin-bottom: 30px
+
+		@media (min-width: $desktop-medium)
+			margin-bottom: 43px
 	
 	&__status
 		color: $accent
+		font-size: 12px
 
-		&-missing
-			color: #C74A2C
+		@media (min-width: $mobile)
+			font-size: 15px
+		
+		@media (min-width: $tablet)
+			font-size: 14px
 
-		@media (min-width: $desktop-large)
+		@media (min-width: $desktop-small)
 			font-size: 13px
 		
 		@media (min-width: $desktop-extralarge)
 			font-size: 14px
+		
+		&-missing
+			color: #C74A2C
 	
 	&__code
 		font-weight: 300
 		color: #828282
 		letter-spacing: normal
+		font-size: 12px
+
+		@media (min-width: $mobile)
+			font-size: 15px
+
+		@media (min-width: $tablet)
+			font-size: 14px
 	
-		@media (min-width: $desktop-large)
+		@media (min-width: $desktop-small)
 			font-size: 13px
 		
 		@media (min-width: $desktop-extralarge)
 			font-size: 14px
 
 	&__desc
-		line-height: 22px
 		color: #181717
 		margin: 10px 0 14px
 		width: 100%
+		font-size: 13px
+		line-height: 15px
+		min-height: 75px
+		overflow: hidden
+		display: -webkit-box
+		-webkit-line-clamp: 5
+		-webkit-box-orient: vertical
+
+		@media (min-width: $mobile)
+			font-size: 14px
+			line-height: 20px
+			min-height: 80px
+			-webkit-line-clamp: 4
+
+		@media (min-width: $tablet)
+			font-size: 13px
 
 		@media (min-width: $desktop-medium)
 			min-height: 88px
+			font-size: 15px
+			line-height: 22px
 
 		@media (min-width: $desktop-large)
-			min-height: 132px
+			min-height: 110px
+			-webkit-line-clamp: 5
 		
 		@media (min-width: $desktop-extralarge)
 			min-height: 88px
+			-webkit-line-clamp: 4
 	
 	&__price
-
 		&-new
 			color: #181717
 			font-weight: 700	
 			letter-spacing: normal
 			margin-right: 6px
+			font-size: 18px
+
+			@media (min-width: $mobile)
+				font-size: 22px
+
+			@media (min-width: $desktop-small)
+				font-size: 19px
 
 			@media (min-width: $desktop-medium)
-				font-size: 24px
+				font-size: 23px
 
 			@media (min-width: $desktop-large)
-				font-size: 22px
+				font-size: 21px
 			
 			@media (min-width: $desktop-extralarge)
 				font-size: 24px
@@ -664,12 +913,19 @@ body
 			text-decoration: line-through
 			letter-spacing: .01em
 			font-weight: 300
+			font-size: 12px
+
+			@media (min-width: $mobile)
+				font-size: 16px	
+
+			@media (min-width: $desktop-small)
+				font-size: 13px	
 
 			@media (min-width: $desktop-medium)
-				font-size: 18px	
+				font-size: 17px	
 
 			@media (min-width: $desktop-large)
-				font-size: 16px	
+				font-size: 15px	
 			
 			@media (min-width: $desktop-extralarge)
 				font-size: 18px
@@ -683,27 +939,39 @@ body
 		border-radius: 50px
 		padding: 0 16px
 		letter-spacing: normal
+		width: 100%
+		min-height: 30px
+		font-size: 13px
 
-		@media (min-width: $desktop-large)
+		@media (min-width: $mobile)
+			width: auto
+			min-height: 34px
+			font-size: 15px
+
+		@media (min-width: $tablet)
 			width: 100%
+
+		@media (min-width: $desktop-small)
+			font-size: 13px
+
+		@media (min-width: $desktop-medium)
+			font-size: 15px
+			min-height: 38px
 
 		@media (min-width: $desktop-extralarge)
 			width: auto
 	
 	&__buy
-		height: 38px
 		color: $accent
 		transition: color .2s ease-in-out, border-color .2s ease-in-out
-
-		&:hover
-			color: rgba(137, 64, 131, 0.5)
-			border-color: rgba(137, 64, 131, 0.5)
-		
-		@media (min-width: $desktop-large)
-			margin-bottom: 10px
+		margin-bottom: 10px
 
 		@media (min-width: $desktop-extralarge)
 			margin: 0
+		
+		&:hover
+			color: rgba(137, 64, 131, 0.5)
+			border-color: rgba(137, 64, 131, 0.5)
 	
 	&__add-basket
 		height: 40px
@@ -759,14 +1027,26 @@ body
 	&__arrow
 		background-color: transparent
 		border: 0
-		top: 190px
+		top: 205px
 		position: absolute
 
 		&_prev
-			left: -126px
+			left: -35px
+	
+			@media (min-width: $mobile-small)
+				left: -20%
+
+			@media (min-width: $tablet)
+				left: -9.3%
 		
 		&_next
-			right: -126px
+			right: -35px
+
+			@media (min-width: $mobile-small)
+				right: -20%
+
+			@media (min-width: $tablet)
+				right: -9.3%
 		
 		&:hover
 			.offer__arrow-svg
@@ -775,6 +1055,10 @@ body
 		&-svg
 			fill: $orange
 			transition: fill .2s ease-in-out
+			width: 40px
+
+			@media (min-width: $mobile)
+				width: auto
 
 .main-bg
 	background: url(../img/bg.png) bottom -70px right 28px / 416px no-repeat
@@ -785,14 +1069,24 @@ body
 	width: 100%	
 
 	&__wrap
-		width: 92%
 		margin: 0 auto
 		display: flex
 		flex-wrap: wrap
+		width: 100%
+
+		@media (min-width: $desktop-small)
+			width: 92%
 	
 	&__nav
 		display: flex
 		flex-wrap: wrap
+		width: 100%
+
+		@media (min-width: $tablet)
+			width: 68%
+
+		@media (min-width: $desktop-small)
+			width: 74%
 
 		@media (min-width: $desktop-medium)
 			width: 77%
@@ -805,10 +1099,23 @@ body
 	
 	&__col
 		&-catalog
-			width: 29.5%
+			width: 40%
+			margin-bottom: 20px
+			@media (min-width: $mobile)
+				width: 27%
+				margin-bottom: auto
+			@media (min-width: $tablet)
+				width: 23%
+			@media (min-width: $desktop-small)
+				width: 29.5%
 		
 		&-info
-			width: 32%
+			@media (min-width: $mobile)
+				width: 40%
+			@media (min-width: $tablet)
+				width: 39%
+			@media (min-width: $desktop-small)
+				width: 32%
 	
 	&__title
 		font-family: $roboto-font
@@ -827,10 +1134,23 @@ body
 		margin-bottom: 16px
 		display: flex
 		align-items: center
+		font-size: 14px
+
+		@media (min-width: $desktop-medium)
+			font-size: 15px
 
 		&-contacts
 			margin-bottom: 23px
 	
+	&__contacts
+		margin-top: 15px
+
+		@media (min-width: $mobile)
+			margin-top: 30px
+
+		@media (min-width: $tablet)
+			margin-top: 0
+
 	&__link
 		font-family: $roboto-font
 		transition: color .2s ease-in-out
@@ -866,6 +1186,141 @@ body
 
 			&:hover
 				background-color: rgba(255, 255, 255, 0.5)
+
+.mm-menu
+	z-index: 999999
+	a
+		color: $accent
+		transition: border-color .2s ease-in-out
+		&:link
+			color: $accent
+		&:hover
+			border-color: $accent
+	
+	&_offcanvas
+		width: 45%
+		@media (min-width: $mobile)
+			width: 80%
+
+.mm-btn
+	&:after, &:before
+		transition: border-color .2s ease-in-out
+	&:hover
+		&:after, &:before
+			border-left: 2px solid $accent
+			border-top: 2px solid $accent
+				
+.hamburger
+	position: absolute
+	left: 0px
+	top: -3px
+
+	@media (min-width: $mobile)
+		top: 30px
+		left: -15px
+
+	@media (min-width: $tablet)
+		top: 15px
+	
+	@media (min-width: $desktop-small)
+		display: block
+	@media (min-width: $desktop-medium)
+		display: none
+
+	&-box
+		width: 34px
+	&-inner, &-inner::before, &-inner::after
+		width: 34px
+		border-radius: 0
+		background-color: $accent
+		height: 2px
+	
+	&.is-active
+		.hamburger-box
+			left: 10px
+
+			@media (min-width: $mobile-small)
+				left: 15px
+
+	&.is-active .hamburger-inner, 
+	&.is-active .hamburger-inner::after, 
+	&.is-active .hamburger-inner::before 
+		background-color: $accent
+
+.mm-panels
+	right: -18px
+
+.mm-navbar
+	border: none
+	&__title
+		padding-top: 20px
+		padding-bottom: 10px
+		font-size: 20px
+		img
+			width: 150px
+			height: auto
+
+.mm-listview
+	.mm-listitem
+		&__text
+			padding: 8px 10% 16px
+			transition: color .25s ease
+			position: relative
+			&:hover, &:focus
+				color: $accent
+				&::before
+					color: $accent
+		&_selected > .mm-listitem__text
+			color: $accent
+			background-color: inherit
+			&::before
+				color: $accent
+
+.mm-listitem::after
+	display: none
+
+body.mm-wrapper_opened
+	overflow-y: scroll
+
+.mm-listitem
+	min-height: 30px
+
+	&__text
+		display: flex
+		align-items: center
+		transition: color .2s ease-in-out
+		background-color: transparent
+		border: 0	
+
+		&:hover
+			.my-menu
+					&__button
+						border-color: $orange
+						color: $orange
+					&__svg
+						fill: $orange
+
+.mm-listview 
+	.mm-listitem
+		&__text
+			&:hover
+				color: $orange
+		
+		&__login
+			padding-left: 8%
+		
+
+.my-menu
+	&__svg
+		fill: $accent
+		margin-right: 10px
+		transition: fill .2s ease-in-out
+	
+	&__button
+		border-bottom: dashed $accent
+		padding-bottom: 5px	
+		transition: border-color .2s ease-in-out, color .2s ease-in-out
+		color: $accent
 
 
 
