@@ -1,6 +1,8 @@
 for (let i = 0; i < arrayToOutput.length; i++) {
 	let currentId = arrayToOutput[i].id;
-	$('#like_' + currentId).click(function () {
+
+	$('#like_' + currentId).on("click touchend",
+	function(){
 		$(this).toggleClass('active');
 	});
 }
