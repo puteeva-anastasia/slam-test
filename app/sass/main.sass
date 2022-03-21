@@ -18,6 +18,11 @@
 	color: #000
 	font-weight: 400
 
+details, summary
+	&:focus-visible
+		outline: 0
+		text-decoration: none
+
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
@@ -27,12 +32,15 @@ input[type="search"]::-webkit-search-results-decoration
 input[type="search"]::-ms-clear
 	display: none
 
+summary::marker
+	content: ""
+
 a
 	color: #fff
-	text-decoration: none		
-	
+	text-decoration: none
+
 	&:focus
-		color: $orange
+		text-decoration: underline
 		outline: none
 
 button
@@ -52,7 +60,6 @@ button
 		font-size: 15px
 
 	&:focus
-		color: $orange
 		outline: none
 
 .hidden
@@ -94,7 +101,7 @@ button
 
 	@media (min-width: $desktop-medium)
 		width: 1140px
-	
+
 	@media (min-width: $desktop-large)
 		width: 1320px
 
@@ -115,7 +122,7 @@ body
 
 	@media (min-width: $mobile)
 		font-size: 15px
-		
+
 	@media (min-width: $desktop-medium)
 		font-size: 13px
 
@@ -148,7 +155,7 @@ body
 			padding-left: 60px
 
 		@media (min-width: $tablet)
-			padding-top: 16px 
+			padding-top: 16px
 
 		@media (min-width: $desktop-small)
 			padding-left: 70px
@@ -171,10 +178,10 @@ body
 
 		&:hover, &:focus
 			transform: scale(1.05)
-		
+
 		&-img
 			height: auto
-				
+
 			@media (min-width: $tablet)
 				width: 135px
 
@@ -195,7 +202,7 @@ body
 
 		@media (min-width: $desktop-medium)
 			display: block
-	
+
 	&__search
 		position: relative
 		margin-top: -4px
@@ -246,7 +253,7 @@ body
 
 			&:hover, &:focus
 				outline-color: $accent
-		
+
 		&-button
 			padding: 0
 			background-color: transparent
@@ -254,7 +261,7 @@ body
 			position: absolute
 			top: 10px
 			right: 0
-			
+
 			@media (min-width: $mobile)
 				left: 19px
 				right: auto
@@ -263,7 +270,7 @@ body
 			&:focus
 				.main-header__search-svg
 					fill: $orange
-		
+
 		&-clear
 			position: absolute
 			top: 13px
@@ -299,7 +306,7 @@ body
 
 			&:hover
 				fill: $orange
-		
+
 	&__button
 		display: flex
 		align-items: center
@@ -325,10 +332,10 @@ body
 
 			.basket__count
 				background-color: $orange
-		
+
 			.main-header__svg
 				fill: $orange
-	
+
 	&__svg
 		fill: $accent
 		transition: fill .2s ease-in-out
@@ -343,8 +350,8 @@ body
 			margin-right: 17px
 
 		&:hover
-			fill: $orange	
-	
+			fill: $orange
+
 	&__count
 		&:hover
 			background-color: $orange
@@ -376,6 +383,7 @@ body
 		margin: 0
 
 	&__item
+		position: relative
 		@media (min-width: $desktop-medium)
 			margin-right: 39px
 
@@ -384,6 +392,51 @@ body
 
 		&:last-child
 			margin-right: 0
+
+	&__details
+		cursor: pointer
+		border-bottom: 1px solid transparent
+		transition: border-bottom-color .2s ease-in-out
+
+		&:focus
+			outline: none
+
+		&[open], &:hover
+			.menu__summary-txt
+				color: rgba(255, 255, 255, 0.5)
+
+			.menu__link-svg
+				stroke: rgba(255, 255, 255, 0.5)
+
+	&__summary
+		display: flex
+		align-items: center
+		&-txt
+			transition: color .2s ease-in-out
+
+	&__open
+		position: absolute
+		top: 22px
+		left: -19px
+		background-color: #fff
+		border: 5px solid $accent
+		padding: 20px
+		z-index: 99999
+
+		&-list
+			padding: 0
+			list-style-type: none
+			width: max-content
+
+		&-item
+			margin-bottom: 10px
+
+		&-link
+			color: $accent
+			transition: color .2s ease-in-out
+
+			&:hover
+				color: $orange
 
 	&__link
 		display: flex
@@ -394,15 +447,13 @@ body
 		&:hover
 			border-bottom-color: #fff
 			text-decoration: none
-		
-		&:focus
-			.menu__link-svg
-				stroke: $orange
 
 		&-svg
 			margin-left: 9px
 			fill: transparent
 			stroke: white
+			margin-top: 2px
+			transition: stroke .2s ease-in-out
 
 .info
 	&__list
@@ -417,7 +468,7 @@ body
 
 		&-call
 			margin-left: 45px
-		
+
 		&-phone
 			margin-left: 56px
 
@@ -431,16 +482,9 @@ body
 			border-bottom-color: rgba(#fff, .25)
 			transition: border-bottom-color .2s ease-in-out
 
-		&:hover
+		&:hover, &:focus
 			.info__button_dashed
 				border-bottom-color: #fff
-		
-		&:focus
-			.info__button_dashed
-				border-bottom-color: $orange
-
-			.info__svg
-				fill: $orange
 
 	&__link
 		&_solid
@@ -457,10 +501,6 @@ body
 		display: flex
 		align-items: center
 
-		&:focus
-			.info__svg
-				fill: $orange
-
 	&__svg
 		margin-right: 4px
 		fill: white
@@ -468,11 +508,11 @@ body
 
 		&-call
 			margin-right: 10px
-		
+
 		&-a1
 			margin-right: 7px
 			margin-left: 5px
-		
+
 		&-mail
 			@media (min-width: $desktop-medium)
 				margin-right: 10px
@@ -481,7 +521,7 @@ body
 				margin-right: 19px
 
 .promo
-	&__slider	
+	&__slider
 		position: relative
 
 		&-link
@@ -513,8 +553,8 @@ body
 				position: absolute
 				top: 0
 				background-color: rgba(0, 0, 0, 0.2)
-			
-			&:hover
+
+			&:hover, &:focus
 				.promo__slider-txt
 					text-decoration: underline
 
@@ -526,13 +566,13 @@ body
 			object-fit: cover
 			width: 100%
 			height: 100%
-		
+
 		&-txt
 			z-index: 100
 			font-family: $roboto-font
 			font-weight: 700
 			position: absolute
-			top: 41.5%	
+			top: 41.5%
 			width: 100%
 			text-align: center
 			font-size: 15px
@@ -548,12 +588,12 @@ body
 
 			@media (min-width: $desktop-medium)
 				font-size: 64px
-		
+
 		&-arrow
 			border: 0
 			background-color: transparent
 			position: absolute
-			z-index: 100	
+			z-index: 100
 			padding: 0
 			top: 35%
 
@@ -571,7 +611,7 @@ body
 
 				@media (min-width: $tablet)
 					left: 50px
-			
+
 			&_next
 				right: 5px
 				@media (min-width: $mobile)
@@ -579,11 +619,11 @@ body
 
 				@media (min-width: $tablet)
 					right: 50px
-			
-			&:hover
+
+			&:hover, &:focus
 				.promo__slider-svg
 					fill: $orange
-		
+
 		&-svg
 			fill: white
 			transition: fill .2s ease-in-out
@@ -631,14 +671,14 @@ body
 		width: 44px
 		height: 44px
 		transition: background-image .2s ease-in-out
-		
+
 		&.minus
 			left: -2px
-			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 2'%3E%3Crect width='13' height='2' x='.97' rx='1' fill='%23894083'/%3E%3C/svg%3E")	
-		
+			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 2'%3E%3Crect width='13' height='2' x='.97' rx='1' fill='%23894083'/%3E%3C/svg%3E")
+
 			&:hover
-				background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 2'%3E%3Crect width='13' height='2' x='.97' rx='1' fill='%23FF8600'/%3E%3C/svg%3E")	
-				
+				background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 2'%3E%3Crect width='13' height='2' x='.97' rx='1' fill='%23FF8600'/%3E%3C/svg%3E")
+
 		&.plus
 			right: -6px
 			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Crect width='13' height='2' x='.97' y='5' rx='1' fill='%23894083'/%3E%3Crect width='12' height='2' x='8.47' rx='1' transform='rotate(90 8.47 0)' fill='%23894083'/%3E%3C/svg%3E")
@@ -668,13 +708,13 @@ body
 
 		@media (min-width: $tablet)
 			width: 85%
-	
+
 	&__cards
 		position: relative
 
-		&.slick-dotted.slick-slider 
+		&.slick-dotted.slick-slider
 			margin: 0
-		
+
 		.slick-list
 			min-height: 600px
 
@@ -709,7 +749,7 @@ body
 				bottom: 50px
 
 			@media (min-width: $desktop-large)
-				bottom: 85px	
+				bottom: 85px
 
 			li
 				height: 8px
@@ -726,17 +766,17 @@ body
 					cursor: pointer
 					padding: 0
 
-					&:hover 
+					&:hover
 						background-color: rgba(255, 134, 0, 0.5)
 
 				&.slick-active
 					display: inline-block
 					button
-						background-color:#FF8700
+						background-color: #FF8700
 
 		.slick-dots li.before, .slick-dots li.after
 			display: inline-block
-	
+
 	&__item
 		margin: 0 15px
 		position: relative
@@ -744,21 +784,21 @@ body
 		&:hover
 			.offer__action
 				display: flex
-						
+
 			.offer__info
 				padding-bottom: 0
 				border-radius: 22px 0 0 0
 				box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08)
-	
+
 	&__info, &__action
 		display: flex
 		flex-wrap: wrap
 		justify-content: space-between
 		align-items: center
-	
+
 	&__info
 		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08)
-		border-radius: 22px 0 
+		border-radius: 22px 0
 		background-color: white
 		transition: padding .1s ease-in-out
 		position: absolute
@@ -766,12 +806,12 @@ body
 
 		@media (min-width: $desktop-medium)
 			padding-top: 46px
-		
+
 		@media (min-width: $desktop-extralarge)
 			padding-right: 20px
 			padding-left: 20px
 			margin-bottom: 22px
-	
+
 	&__action
 		padding: 0 20px 17px
 		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08)
@@ -813,26 +853,26 @@ body
 
 		@media (min-width: $desktop-medium)
 			margin-bottom: 43px
-	
+
 	&__status
 		color: $accent
 		font-size: 12px
 
 		@media (min-width: $mobile)
 			font-size: 15px
-		
+
 		@media (min-width: $tablet)
 			font-size: 14px
 
 		@media (min-width: $desktop-small)
 			font-size: 13px
-		
+
 		@media (min-width: $desktop-extralarge)
 			font-size: 14px
-		
+
 		&-missing
 			color: #C74A2C
-	
+
 	&__code
 		font-weight: 300
 		color: #828282
@@ -844,10 +884,10 @@ body
 
 		@media (min-width: $tablet)
 			font-size: 14px
-	
+
 		@media (min-width: $desktop-small)
 			font-size: 13px
-		
+
 		@media (min-width: $desktop-extralarge)
 			font-size: 14px
 
@@ -880,15 +920,15 @@ body
 		@media (min-width: $desktop-large)
 			min-height: 110px
 			-webkit-line-clamp: 5
-		
+
 		@media (min-width: $desktop-extralarge)
 			min-height: 88px
 			-webkit-line-clamp: 4
-	
+
 	&__price
 		&-new
 			color: #181717
-			font-weight: 700	
+			font-weight: 700
 			letter-spacing: normal
 			margin-right: 6px
 			font-size: 18px
@@ -904,7 +944,7 @@ body
 
 			@media (min-width: $desktop-large)
 				font-size: 21px
-			
+
 			@media (min-width: $desktop-extralarge)
 				font-size: 24px
 
@@ -916,20 +956,20 @@ body
 			font-size: 12px
 
 			@media (min-width: $mobile)
-				font-size: 16px	
+				font-size: 16px
 
 			@media (min-width: $desktop-small)
-				font-size: 13px	
+				font-size: 13px
 
 			@media (min-width: $desktop-medium)
-				font-size: 17px	
+				font-size: 17px
 
 			@media (min-width: $desktop-large)
-				font-size: 15px	
-			
+				font-size: 15px
+
 			@media (min-width: $desktop-extralarge)
 				font-size: 18px
-	
+
 	&__buy, &__add-basket
 		font-weight: 700
 		display: flex
@@ -960,21 +1000,26 @@ body
 
 		@media (min-width: $desktop-extralarge)
 			width: auto
-	
+
 	&__buy
 		color: $accent
 		transition: color .2s ease-in-out, border-color .2s ease-in-out
 		margin-bottom: 10px
 
+		@media (min-width: $mobile)
+			margin: 0
+
+		@media (min-width: $tablet)
+			margin-bottom: 10px
+
 		@media (min-width: $desktop-extralarge)
 			margin: 0
-		
+
 		&:hover
 			color: rgba(137, 64, 131, 0.5)
 			border-color: rgba(137, 64, 131, 0.5)
-	
+
 	&__add-basket
-		height: 40px
 		color: white
 		background-color: $accent
 		transition: border-color .2s ease-in-out, background-color .2s ease-in-out
@@ -982,14 +1027,14 @@ body
 		&:hover
 			background-color: rgba(137, 64, 131, 0.5)
 			border-color: rgba(137, 64, 131, 0.5)
-	
+
 	&__tag
 		padding: 3px 10px
 		border-radius: 16px 0px
 		margin-bottom: 2px
 		font-weight: 700
 		font-size: 12px
-	
+
 	&__tags
 		display: flex
 		flex-direction: column
@@ -997,13 +1042,13 @@ body
 		position: absolute
 		top: 10px
 		left: 12px
-		
+
 		&_action
-			background-color:	#FDCA33
-		
+			background-color: 	#FDCA33
+
 		&_new
 			background-color: #8dc638
-	
+
 		&_rec
 			background-color: #00C2CE
 
@@ -1023,7 +1068,7 @@ body
 	&__button
 		&-svg
 			fill: $orange
-	
+
 	&__arrow
 		background-color: transparent
 		border: 0
@@ -1032,13 +1077,13 @@ body
 
 		&_prev
 			left: -35px
-	
+
 			@media (min-width: $mobile-small)
 				left: -20%
 
 			@media (min-width: $tablet)
 				left: -9.3%
-		
+
 		&_next
 			right: -35px
 
@@ -1047,8 +1092,8 @@ body
 
 			@media (min-width: $tablet)
 				right: -9.3%
-		
-		&:hover
+
+		&:hover, &:focus
 			.offer__arrow-svg
 				fill: $accent
 
@@ -1066,7 +1111,7 @@ body
 .main-footer
 	background-color: $accent
 	padding: 33px 0 54px
-	width: 100%	
+	width: 100%
 
 	&__wrap
 		margin: 0 auto
@@ -1076,7 +1121,7 @@ body
 
 		@media (min-width: $desktop-small)
 			width: 92%
-	
+
 	&__nav
 		display: flex
 		flex-wrap: wrap
@@ -1094,9 +1139,9 @@ body
 		@media (min-width: $desktop-large)
 			width: 80%
 
-		@media (min-width: $desktop-extralarge)	
+		@media (min-width: $desktop-extralarge)
 			width: 83%
-	
+
 	&__col
 		&-catalog
 			width: 40%
@@ -1108,7 +1153,7 @@ body
 				width: 23%
 			@media (min-width: $desktop-small)
 				width: 29.5%
-		
+
 		&-info
 			@media (min-width: $mobile)
 				width: 40%
@@ -1116,7 +1161,7 @@ body
 				width: 39%
 			@media (min-width: $desktop-small)
 				width: 32%
-	
+
 	&__title
 		font-family: $roboto-font
 		font-weight: 700
@@ -1124,11 +1169,11 @@ body
 		letter-spacing: 0.01em
 		margin-bottom: 21px
 		display: block
-	
+
 	&__list
 		list-style-type: none
 		padding: 0
-	
+
 	&__item
 		font-family: $roboto-font
 		margin-bottom: 16px
@@ -1141,7 +1186,7 @@ body
 
 		&-contacts
 			margin-bottom: 23px
-	
+
 	&__contacts
 		margin-top: 15px
 
@@ -1162,13 +1207,13 @@ body
 
 			.main-footer__icon
 				fill: rgba(255, 255, 255, 0.5)
-	
+
 	&__icon
 		margin-right: 14px
 		fill: white
 		transition: fill .2s ease-in-out
 		margin-left: 7px
-	
+
 	&__social
 		margin-top: 24px
 		display: flex
@@ -1183,8 +1228,9 @@ body
 			border-radius: 50%
 			margin-right: 2px
 			margin-left: 5px
+			transition: background-color .2s ease-in-out
 
-			&:hover
+			&:hover, &:focus
 				background-color: rgba(255, 255, 255, 0.5)
 
 .mm-menu
@@ -1196,7 +1242,7 @@ body
 			color: $accent
 		&:hover
 			border-color: $accent
-	
+
 	&_offcanvas
 		width: 45%
 		@media (min-width: $mobile)
@@ -1209,7 +1255,7 @@ body
 		&:after, &:before
 			border-left: 2px solid $accent
 			border-top: 2px solid $accent
-				
+
 .hamburger
 	position: absolute
 	left: 0px
@@ -1221,7 +1267,7 @@ body
 
 	@media (min-width: $tablet)
 		top: 15px
-	
+
 	@media (min-width: $desktop-small)
 		display: block
 	@media (min-width: $desktop-medium)
@@ -1234,7 +1280,7 @@ body
 		border-radius: 0
 		background-color: $accent
 		height: 2px
-	
+
 	&.is-active
 		.hamburger-box
 			left: 10px
@@ -1242,9 +1288,9 @@ body
 			@media (min-width: $mobile-small)
 				left: 15px
 
-	&.is-active .hamburger-inner, 
-	&.is-active .hamburger-inner::after, 
-	&.is-active .hamburger-inner::before 
+	&.is-active .hamburger-inner,
+	&.is-active .hamburger-inner::after,
+	&.is-active .hamburger-inner::before
 		background-color: $accent
 
 .mm-panels
@@ -1290,38 +1336,33 @@ body.mm-wrapper_opened
 		align-items: center
 		transition: color .2s ease-in-out
 		background-color: transparent
-		border: 0	
+		border: 0
 
 		&:hover
 			.my-menu
-					&__button
-						border-color: $orange
-						color: $orange
+				&__button
+					border-color: $orange
+					color: $orange
 					&__svg
 						fill: $orange
 
-.mm-listview 
+.mm-listview
 	.mm-listitem
 		&__text
 			&:hover
 				color: $orange
-		
+
 		&__login
 			padding-left: 8%
-		
 
 .my-menu
 	&__svg
 		fill: $accent
 		margin-right: 10px
 		transition: fill .2s ease-in-out
-	
+
 	&__button
 		border-bottom: dashed $accent
-		padding-bottom: 5px	
+		padding-bottom: 5px
 		transition: border-color .2s ease-in-out, color .2s ease-in-out
 		color: $accent
-
-
-
-

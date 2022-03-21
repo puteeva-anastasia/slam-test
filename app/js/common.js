@@ -102,39 +102,39 @@ var dots = $('.slick-dots li');
 dots.click(function () {
 	var $this = $(this);
 	dots.removeClass('before after');
-	//отображаем 2 предыдущие точки
+
 	$this
 		.prev().addClass('before')
 		.prev().addClass('before');
-	//отображаем 2 следующие точки
+
 	$this
 		.next().addClass('after')
 		.next().addClass('after');
 
-	//если мы в самом начале - добавляем пару последующих точек
+
 	if (!$this.prev().length) {
 		$this.next().next().next()
 			.addClass('after').next()
 			.addClass('after');
 	}
-	//на 2й позиции - добавляем одну точку
+
 	if (!$this.prev().prev().length) {
 		$this.next().next().next()
 			.addClass('after');
 	}
-	//в самом конце - добавляем пару доп. предыдущих точек
+
 	if (!$this.next().length) {
 		$this.prev().prev().prev()
 			.addClass('before').prev()
 			.addClass('before');
 	}
-	//предпоследний элемента - добавляем одну пред. точку
+
 	if (!$this.next().next().length) {
 		$this.prev().prev().prev()
 			.addClass('before');
 	}
 });
-dots.eq(0).click(); //кликаем на первую точку
+dots.eq(0).click();
 
 $('#my-menu').mmenu({
 	extensions: ['effect-menu-slide', 'pagedim-black', 'position-left'],

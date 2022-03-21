@@ -1,29 +1,38 @@
 import pkg from 'gulp'
-const { gulp, src, dest, parallel, series, watch } = pkg
+const {
+	gulp,
+	src,
+	dest,
+	parallel,
+	series,
+	watch
+} = pkg
 
-import browserSync   from 'browser-sync'
-import gulpSass      from 'gulp-sass'
-import dartSass      from 'sass'
-import postCss       from 'gulp-postcss'
-import cssnano       from 'cssnano'
-const  sassfn        = gulpSass(dartSass)
-import concat        from 'gulp-concat'
-import uglifyim      from 'gulp-uglify-es'
-const  uglify        = uglifyim.default
-import rename        from 'gulp-rename'
-import del           from 'del'
-import imageminfn    from 'gulp-imagemin'
-import cache         from 'gulp-cache'
-import autoprefixer  from 'autoprefixer'
-import ftp           from 'vinyl-ftp'
-import rsyncfn       from 'gulp-rsync'
+import browserSync from 'browser-sync'
+import gulpSass from 'gulp-sass'
+import dartSass from 'sass'
+import postCss from 'gulp-postcss'
+import cssnano from 'cssnano'
+const sassfn = gulpSass(dartSass)
+import concat from 'gulp-concat'
+import uglifyim from 'gulp-uglify-es'
+const uglify = uglifyim.default
+import rename from 'gulp-rename'
+import del from 'del'
+import imageminfn from 'gulp-imagemin'
+import cache from 'gulp-cache'
+import autoprefixer from 'autoprefixer'
+import ftp from 'vinyl-ftp'
+import rsyncfn from 'gulp-rsync'
 
 function browsersync() {
 	browserSync.init({
 		server: {
 			baseDir: 'app/',
 		},
-		ghostMode: { clicks: false },
+		ghostMode: {
+			clicks: false
+		},
 		notify: false,
 		online: true,
 		// tunnel: 'yousutename', // Attempt to use the URL https://yousutename.loca.lt
@@ -32,27 +41,40 @@ function browsersync() {
 
 function js() {
 	return src([
-		'app/libs/jquery/dist/jquery.min.js',
-		'app/libs/slick/slick.min.js',
-		'app/libs/mmenu/mmenu.js',
-		'app/js/common.js', // Всегда в конце
+			'app/libs/jquery/dist/jquery.min.js',
+			'app/libs/slick/slick.min.js',
+			'app/libs/mmenu/mmenu.js',
+			'app/js/data.js',
+			'app/js/render.js',
+			'app/js/common.js', // Всегда в конце
 		])
-	.pipe(concat('scripts.min.js'))
-	.pipe(uglify()) // Минимизировать весь js (на выбор)
-	.pipe(dest('app/js'))
-	.pipe(browserSync.stream())
+		.pipe(concat('scripts.min.js'))
+		.pipe(uglify()) // Минимизировать весь js (на выбор)
+		.pipe(dest('app/js'))
+		.pipe(browserSync.stream())
 }
 
 function sass() {
 	return src('app/sass/**/*.sass')
-	.pipe(sassfn())
-	.pipe(postCss([
-		autoprefixer({ grid: 'autoplace' }),
-		cssnano({ preset: ['default', { discardComments: { removeAll: true } }] })
-	]))
-	.pipe(rename({ suffix: '.min', prefix : '' }))
-	.pipe(dest('app/css'))
-	.pipe(browserSync.stream())
+		.pipe(sassfn())
+		.pipe(postCss([
+			autoprefixer({
+				grid: 'autoplace'
+			}),
+			cssnano({
+				preset: ['default', {
+					discardComments: {
+						removeAll: true
+					}
+				}]
+			})
+		]))
+		.pipe(rename({
+			suffix: '.min',
+			prefix: ''
+		}))
+		.pipe(dest('app/css'))
+		.pipe(browserSync.stream())
 }
 
 function imagemin() {
@@ -61,23 +83,31 @@ function imagemin() {
 		.pipe(dest('dist/img/'))
 }
 
-async function removedist() { del('dist/**/*', { force: true }) }
-async function clearcache() { cache.clearAll() }
+async function removedist() {
+	del('dist/**/*', {
+		force: true
+	})
+}
+async function clearcache() {
+	cache.clearAll()
+}
 
 function buildcopy() {
 	return src([
-		'app/*.html',
-		'app/.htaccess',
-		'{app/js,app/css}/*.min.*',
-		'app/fonts/**/*'
-	], { base: 'app/' })
-	.pipe(dest('dist'))
+			'app/*.html',
+			'app/.htaccess',
+			'{app/js,app/css}/*.min.*',
+			'app/fonts/**/*'
+		], {
+			base: 'app/'
+		})
+		.pipe(dest('dist'))
 }
 
 function deploy() {
 	let conn = ftp.create({
-		host:     'hostname.com',
-		user:     'username',
+		host: 'hostname.com',
+		user: 'username',
 		password: 'userpassword',
 		parallel: 10
 	});
@@ -85,8 +115,10 @@ function deploy() {
 		'dist/**',
 		// 'dist/.htaccess',
 	]
-	return src(globs, {buffer: false})
-	.pipe(conn.dest('/path/to/folder/on/server'))
+	return src(globs, {
+			buffer: false
+		})
+		.pipe(conn.dest('/path/to/folder/on/server'))
 }
 
 function rsync() {
@@ -96,8 +128,8 @@ function rsync() {
 			hostname: 'username@yousite.com',
 			destination: 'yousite/public_html/',
 			// clean: true, // Mirror copy with file deletion
-			include: [/* '*.htaccess' */], // Included files to deploy,
-			exclude: [ '**/Thumbs.db', '**/*.DS_Store' ],
+			include: [ /* '*.htaccess' */ ], // Included files to deploy,
+			exclude: ['**/Thumbs.db', '**/*.DS_Store'],
 			recursive: true,
 			archive: true,
 			silent: false,
@@ -106,12 +138,25 @@ function rsync() {
 }
 
 function startwatch() {
-	watch('app/sass/**/*.sass', { usePolling: true }, sass)
-	watch(['libs/**/*.js', 'app/js/common.js'], { usePolling: true }, js)
-	watch(['app/*.html'], { usePolling: true }).on('change', browserSync.reload)
+	watch('app/sass/**/*.sass', {
+		usePolling: true
+	}, sass)
+	watch(['libs/**/*.js', 'app/js/common.js'], {
+		usePolling: true
+	}, js)
+	watch(['app/*.html'], {
+		usePolling: true
+	}).on('change', browserSync.reload)
 }
 
-export { js, sass, imagemin, deploy, rsync, clearcache }
+export {
+	js,
+	sass,
+	imagemin,
+	deploy,
+	rsync,
+	clearcache
+}
 export let build = series(removedist, imagemin, js, sass, buildcopy)
 
 export default series(js, sass, parallel(browsersync, startwatch))
