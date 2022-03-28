@@ -1,4 +1,4 @@
-for (let i = 0; i < arrayToOutput.length; i++) {
+/**for (let i = 0; i < arrayToOutput.length; i++) {
 	let currentId = arrayToOutput[i].id;
 
 	$('#like_' + currentId).on("click touchend",
@@ -6,6 +6,29 @@ for (let i = 0; i < arrayToOutput.length; i++) {
 			$(this).toggleClass('active');
 		});
 }
+*/
+
+var mySwiper = new Swiper('.swiper-container', {
+	// Optional parameters
+	direction: 'vertical',
+	loop: true,
+
+	// If we need pagination
+	pagination: {
+		el: '.swiper-pagination',
+	},
+
+	// Navigation arrows
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+	},
+
+	// And if we need scrollbar
+	scrollbar: {
+		el: '.swiper-scrollbar',
+	},
+})
 
 window.onload = function () {
 	var search = document.querySelector("#form-search");
@@ -43,6 +66,8 @@ $('#promo-slider').slick({
 	nextArrow: '<button type="button" class="promo__slider-arrow promo__slider-arrow_next"><svg class="promo__slider-svg" width="56" height="43" viewBox="0 0 56 43" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.999 1.15086L54.999 1.15086L54.999 41.7383L16.999 41.7383V21.9786H40.7724L33.5301 29.7141L34.2372 30.4693L42.6866 21.4446L34.2372 12.4198L33.5301 13.1751L40.7724 20.9105H16.999L16.999 1.15086ZM15.999 20.9105L15.999 0.0827637L55.999 0.0827637L55.999 42.8064L15.999 42.8064L15.999 21.9786L0 21.9786L0 20.9105L15.999 20.9105Z"/></svg></button>'
 });
 
+/** 
+
 $('.quantity #bt_minus').click(function () {
 	let $input = $(this).parent().find('.quantity__input');
 	let count = parseInt($input.val()) - 1;
@@ -67,7 +92,10 @@ $('.quantity__input').bind("change keyup input click", function () {
 	}
 });
 
-$('#offer-cards').slick({
+*/
+
+/** 
+ * $('#offer-cards').slick({
 	slidesToShow: 4,
 	slidesToScroll: 4,
 	dots: true,
@@ -97,55 +125,31 @@ $('#offer-cards').slick({
 		}
 	]
 });
-var dots = $('.slick-dots li');
-dots.click(function () {
-	var $this = $(this);
-	dots.removeClass('before after');
-	$this
-		.prev().addClass('before')
-		.prev().addClass('before');
-	$this
-		.next().addClass('after')
-		.next().addClass('after');
-	if (!$this.prev().length) {
-		$this.next().next().next()
-			.addClass('after').next()
-			.addClass('after');
-	}
-	if (!$this.prev().prev().length) {
-		$this.next().next().next()
-			.addClass('after');
-	}
-	if (!$this.next().length) {
-		$this.prev().prev().prev()
-			.addClass('before').prev()
-			.addClass('before');
-	}
-	if (!$this.next().next().length) {
-		$this.prev().prev().prev()
-			.addClass('before');
-	}
-});
-dots.eq(0).click();
+
+
+
+
+
 $('#my-menu').mmenu({
 	extensions: ['effect-menu-slide', 'pagedim-black', 'position-left'],
 	navbar: {
 		title: '<img src="img/logo.png" alt="SLAM">'
 	}
 });
+*/
+
+/*
 var api = $('#my-menu').data('mmenu');
 api.bind('open:finish', function () {
 	$('.hamburger').addClass('is-active');
 }).bind('close:finish', function () {
 	$('.hamburger').removeClass('is-active');
 });
-let cardInfo = document.getElementById("offer-info");
-let slickDots = document.querySelector('.slick-dots');
 
-function hiddenDots() {
-	slickDots.style.zIndex = -1;
-}
+*/
 
-function displayDots() {
-	slickDots.style.zIndex = 'auto';
-}
+/*
+
+
+*/
+

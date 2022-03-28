@@ -1,4 +1,4 @@
-let cardTemplate = document.getElementById("card-template").textContent;
+/**let cardTemplate = document.getElementById("card-template").textContent;
 let cards = document.getElementById("offer-cards");
 let arrayToOutput = DATA;
 
@@ -57,3 +57,5 @@ function render() {
 }
 
 render();
+
+*/

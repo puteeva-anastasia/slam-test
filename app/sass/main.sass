@@ -94,13 +94,13 @@ button
 		padding: 0
 
 	@media (min-width: $tablet)
-		width: 720px
+		width: 760px
 
 	@media (min-width: $desktop-small)
 		width: 960px
 
 	@media (min-width: $desktop-medium)
-		width: 1140px
+		width: 1155px
 
 	@media (min-width: $desktop-large)
 		width: 1320px
@@ -525,6 +525,9 @@ body
 		position: relative
 
 		&-link
+			background-color: rgba(0, 0, 0, 0.2)
+
+		.swiper-slide
 			position: relative
 			height: 200px
 
@@ -546,14 +549,6 @@ body
 			@media (min-width: $desktop-extralarge)
 				height: 798px
 
-			&::after
-				content: ''
-				width: 100%
-				height: 100%
-				position: absolute
-				top: 0
-				background-color: rgba(0, 0, 0, 0.2)
-
 			&:hover, &:focus
 				.promo__slider-txt
 					text-decoration: underline
@@ -573,6 +568,7 @@ body
 			font-weight: 700
 			position: absolute
 			top: 41.5%
+			left: 0
 			width: 100%
 			text-align: center
 			font-size: 15px
@@ -595,14 +591,15 @@ body
 			position: absolute
 			z-index: 100
 			padding: 0
-			top: 35%
+			top: 41.6%
+			width: 56px
 
 			@media (min-width: $mobile)
-				top: 39.2%
+				top: 43%
 			@media (min-width: $tablet)
-				top: 41.5%
+				top: 45%
 			@media (min-width: $desktop-small)
-				top: 44.4%
+				top: 48%
 
 			&_prev
 				left: 5px
@@ -702,84 +699,40 @@ body
 	&__wrap
 		margin: 0 auto
 		width: 85%
+		position: relative
 
 		@media (min-width: $mobile-small)
 			width: 70%
 
 		@media (min-width: $tablet)
 			width: 85%
+		
+		@media (min-width: $desktop-small)
+			width: 69%
+
+		@media (min-width: $desktop-medium)
+			width: 85%
+		
+		@media (min-width: $desktop-large)
+			width: 77%
+		
+		@media (min-width: $desktop-extralarge)
+			width: 85%
 
 	&__cards
 		position: relative
 
-		&.slick-dotted.slick-slider
-			margin: 0
-
-		.slick-list
-			min-height: 600px
-
-			@media (min-width: $mobile)
-				min-height: 560px
-
-			@media (min-width: $tablet)
-				min-height: 660px
-
-			@media (min-width: $desktop-small)
-				min-height: 630px
-
-			@media (min-width: $desktop-medium)
-				min-height: 660px
-
-			@media (min-width: $desktop-large)
-				min-height: 670px
-
-			@media (min-width: $desktop-extralarge)
-				min-height: 625px
-
-		.slick-dots
-			display: none !important
-			@media (min-width: $tablet)
-				bottom: 120px
-
-			@media (min-width: $desktop-small)
-				bottom: 70px
-				display: block!important
-
-			@media (min-width: $desktop-medium)
-				bottom: 50px
-
-			@media (min-width: $desktop-large)
-				bottom: 85px
-
-			li
-				height: 8px
-				width: 8px
-				display: none
-				padding: 14px
-				margin: 0
-
-				button
-					height: inherit
-					width: inherit
-					border-radius: 50%
-					background-color: #BDBDBD
-					cursor: pointer
-					padding: 0
-
-					&:hover
-						background-color: rgba(255, 134, 0, 0.5)
-
-				&.slick-active
-					display: inline-block
-					button
-						background-color: #FF8700
-
-		.slick-dots li.before, .slick-dots li.after
-			display: inline-block
-
 	&__item
-		margin: 0 15px
+		width: auto
+		height: 100%
+		margin: 0 auto
 		position: relative
+
+		@media (min-width: 414px)
+			width: 300px
+
+		@media (min-width: 475px)	
+			width: 309px
 
 		&:hover
 			.offer__action
@@ -803,6 +756,8 @@ body
 		transition: padding .1s ease-in-out
 		position: absolute
 		padding: 36px 15px 17px
+		box-sizing: border-box
+		width: 100%	
 
 		@media (min-width: $desktop-medium)
 			padding-top: 46px
@@ -840,10 +795,11 @@ body
 			top: 436px
 
 	&__img
-		display: block
 		margin: 0 auto
-		object-fit: contain
 		margin-bottom: 10px
+		width: 230px
+		height: 185px
+		background: center / contain no-repeat 
 
 		@media (min-width: $mobile)
 			margin-bottom: 20px
@@ -1070,10 +1026,10 @@ body
 			fill: $orange
 
 	&__arrow
-		background-color: transparent
-		border: 0
 		top: 205px
 		position: absolute
+		width: 56px
+		height: 40px
 
 		&_prev
 			left: -35px
@@ -1083,6 +1039,13 @@ body
 
 			@media (min-width: $tablet)
 				left: -9.3%
+			
+			@media (min-width: $desktop-small)
+				left: -20%
+
+			@media (min-width: $desktop-medium)
+				left: -9.3%
+			
 
 		&_next
 			right: -35px
@@ -1092,8 +1055,14 @@ body
 
 			@media (min-width: $tablet)
 				right: -9.3%
+			
+			@media (min-width: $desktop-small)
+				right: -20%
+			
+			@media (min-width: $desktop-medium)
+				right: -9.3%
 
-		&:hover, &:focus
+		&:hover
 			.offer__arrow-svg
 				fill: $accent
 
@@ -1106,7 +1075,7 @@ body
 				width: auto
 
 .main-bg
-	background: url(../img/bg.png) bottom -70px right 28px / 416px no-repeat
+	background: url(../img/bg.svg) bottom -70px right 28px / 416px no-repeat
 
 .main-footer
 	background-color: $accent
@@ -1366,3 +1335,94 @@ body.mm-wrapper_opened
 		padding-bottom: 5px
 		transition: border-color .2s ease-in-out, color .2s ease-in-out
 		color: $accent
+
+.no-js
+	.my-menu
+		display: none
+
+	.promo__slider-link
+		display: none
+
+		&:first-of-type
+			display: block
+
+	.offer__wrap .swiper-slide
+		width: 309px
+		margin-right: 15px
+		margin-left: 15px
+	
+	.offer__img
+		background-color:	rgba(0, 0, 0, .1)
+	
+	.swiper-slide:first-of-type
+		background: center / cover no-repeat url(../img/slider/slide-1/slide-1-1600.webp) rgba(0, 0, 0, .1) 
+
+.offer-swiper
+	min-height: 600px
+	width: 100%
+	position: relative
+
+	@media (min-width: $mobile)
+		min-height: 560px
+
+	@media (min-width: $tablet)
+		min-height: 660px
+
+	@media (min-width: $desktop-small)
+		min-height: 630px
+
+	@media (min-width: $desktop-medium)
+		min-height: 660px
+
+	@media (min-width: $desktop-large)
+		min-height: 670px
+
+	@media (min-width: $desktop-extralarge)
+		min-height: 625px
+
+.offer .swiper-pagination
+	display: none!important
+	
+	@media (min-width: $tablet)
+		bottom: 120px
+
+	@media (min-width: $desktop-small)
+		bottom: 70px
+		display: block!important
+
+	@media (min-width: $desktop-medium)
+		bottom: 50px
+
+	@media (min-width: $desktop-large)
+		bottom: 85px
+
+	&-bullet
+		height: 8px
+		width: 8px
+		margin: 14px!important
+		background-color: #BDBDBD
+		opacity: 1
+		display: none
+		transition: background-color .2s ease-in-out
+
+		&:hover
+			background-color: rgba(255, 134, 0, 0.5)
+		
+		&-active
+			display: inline-block
+			background-color: #FF8700
+		
+		&.after, &.before
+			display: inline-block
+
+.swiper-button-prev
+	&.swiper-button-disabled
+		opacity: 1
+	&:after
+		display: none
+
+.swiper-button-next
+	&.swiper-button-disabled
+		opacity: 1
+	&:after
+		display: none

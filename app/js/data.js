@@ -1,4 +1,4 @@
-let DATA = [{
+/**let DATA = [{
 		id: 0,
 		action: true,
 		new: true,
@@ -619,3 +619,5 @@ let DATA = [{
 		old: "4.00"
 	},
 ]
+
+*/

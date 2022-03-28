@@ -42,11 +42,9 @@ function browsersync() {
 function js() {
 	return src([
 			'app/libs/jquery/dist/jquery.min.js',
-			'app/libs/slick/slick.min.js',
 			'app/libs/mmenu/mmenu.js',
-			'app/js/data.js',
-			'app/js/render.js',
-			'app/js/common.js', // Всегда в конце
+			'app/libs/swiper/swiper-bundle.min.js',
+			'app/js/script.js', // Всегда в конце
 		])
 		.pipe(concat('scripts.min.js'))
 		.pipe(uglify()) // Минимизировать весь js (на выбор)
@@ -141,7 +139,7 @@ function startwatch() {
 	watch('app/sass/**/*.sass', {
 		usePolling: true
 	}, sass)
-	watch(['libs/**/*.js', 'app/js/common.js'], {
+	watch(['libs/**/*.js', 'app/js/script.js'], {
 		usePolling: true
 	}, js)
 	watch(['app/*.html'], {
