@@ -393,35 +393,15 @@ body
 		&:last-child
 			margin-right: 0
 
-	&__details
-		cursor: pointer
-		border-bottom: 1px solid transparent
-		transition: border-bottom-color .2s ease-in-out
-
-		&:focus
-			outline: none
-
-		&[open], &:hover
-			.menu__summary-txt
-				color: rgba(255, 255, 255, 0.5)
-
-			.menu__link-svg
-				stroke: rgba(255, 255, 255, 0.5)
-
-	&__summary
-		display: flex
-		align-items: center
-		&-txt
-			transition: color .2s ease-in-out
-
 	&__open
 		position: absolute
-		top: 22px
+		top: 20px
 		left: -19px
 		background-color: #fff
 		border: 5px solid $accent
 		padding: 20px
 		z-index: 99999
+		display: none
 
 		&-list
 			padding: 0
@@ -437,6 +417,30 @@ body
 
 			&:hover
 				color: $orange
+
+	&__details
+		cursor: pointer
+		border-bottom: 1px solid transparent
+		transition: border-bottom-color .2s ease-in-out
+
+		&:hover .menu__open
+			display: block
+
+		&:focus
+			outline: none
+
+		&:hover
+			.menu__summary-txt
+				color: rgba(255, 255, 255, 0.5)
+
+			.menu__link-svg
+				stroke: rgba(255, 255, 255, 0.5)
+
+	&__summary
+		display: flex
+		align-items: center
+		&-txt
+			transition: color .2s ease-in-out
 
 	&__link
 		display: flex
@@ -486,16 +490,24 @@ body
 			.info__button_dashed
 				border-bottom-color: #fff
 
+			.info__svg
+				stroke: $orange
+				fill: $orange
+
 	&__link
 		&_solid
 			border-bottom: 1px solid transparent
-			transition: border-bottom-color .2s ease-in-out
+			transition: border-bottom-color .2s
 
 		&:hover
 			text-decoration: none
 
 			.info__link_solid
 				border-bottom-color: #fff
+
+			.info__svg
+				fill: $orange
+				stroke: $orange
 
 	&__link, &__button
 		display: flex
@@ -505,6 +517,7 @@ body
 		margin-right: 4px
 		fill: white
 		stroke: white
+		transition: fill .2s ease-in-out, stroke .2s ease-in-out
 
 		&-call
 			margin-right: 10px
@@ -567,11 +580,17 @@ body
 			font-family: $roboto-font
 			font-weight: 700
 			position: absolute
-			top: 41.5%
+			top: 33%
 			left: 0
-			width: 100%
+			width: 50%
 			text-align: center
 			font-size: 15px
+			right: 0
+			margin: 0 auto
+
+			@media (min-width: $mobile-small)
+				width: 100%
+				top: 41.5%
 
 			@media (min-width: $mobile)
 				font-size: 25px
@@ -706,16 +725,16 @@ body
 
 		@media (min-width: $tablet)
 			width: 85%
-		
+
 		@media (min-width: $desktop-small)
 			width: 69%
 
 		@media (min-width: $desktop-medium)
 			width: 85%
-		
+
 		@media (min-width: $desktop-large)
 			width: 77%
-		
+
 		@media (min-width: $desktop-extralarge)
 			width: 85%
 
@@ -731,7 +750,7 @@ body
 		@media (min-width: 414px)
 			width: 300px
 
-		@media (min-width: 475px)	
+		@media (min-width: 475px)
 			width: 309px
 
 		&:hover
@@ -757,7 +776,7 @@ body
 		position: absolute
 		padding: 36px 15px 17px
 		box-sizing: border-box
-		width: 100%	
+		width: 100%
 
 		@media (min-width: $desktop-medium)
 			padding-top: 46px
@@ -799,7 +818,7 @@ body
 		margin-bottom: 10px
 		width: 230px
 		height: 185px
-		background: center / contain no-repeat 
+		background: center / contain no-repeat
 
 		@media (min-width: $mobile)
 			margin-bottom: 20px
@@ -1009,7 +1028,7 @@ body
 			background-color: #00C2CE
 
 	&__like
-		border: 0
+		display: block
 		background: center / contain no-repeat url(../img/like.svg)
 		width: 24px
 		height: 21px
@@ -1039,13 +1058,12 @@ body
 
 			@media (min-width: $tablet)
 				left: -9.3%
-			
+
 			@media (min-width: $desktop-small)
 				left: -20%
 
 			@media (min-width: $desktop-medium)
 				left: -9.3%
-			
 
 		&_next
 			right: -35px
@@ -1055,10 +1073,10 @@ body
 
 			@media (min-width: $tablet)
 				right: -9.3%
-			
+
 			@media (min-width: $desktop-small)
 				right: -20%
-			
+
 			@media (min-width: $desktop-medium)
 				right: -9.3%
 
@@ -1350,12 +1368,12 @@ body.mm-wrapper_opened
 		width: 309px
 		margin-right: 15px
 		margin-left: 15px
-	
+
 	.offer__img
-		background-color:	rgba(0, 0, 0, .1)
-	
+		background-color: 	rgba(0, 0, 0, .1)
+
 	.swiper-slide:first-of-type
-		background: center / cover no-repeat url(../img/slider/slide-1/slide-1-1600.webp) rgba(0, 0, 0, .1) 
+		background: center / cover no-repeat url(../img/slider/slide-1/slide-1-1600.webp) rgba(0, 0, 0, .1)
 
 .offer-swiper
 	min-height: 600px
@@ -1382,7 +1400,7 @@ body.mm-wrapper_opened
 
 .offer .swiper-pagination
 	display: none!important
-	
+
 	@media (min-width: $tablet)
 		bottom: 120px
 
@@ -1407,11 +1425,11 @@ body.mm-wrapper_opened
 
 		&:hover
 			background-color: rgba(255, 134, 0, 0.5)
-		
+
 		&-active
 			display: inline-block
 			background-color: #FF8700
-		
+
 		&.after, &.before
 			display: inline-block
 
